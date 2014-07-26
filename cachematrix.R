@@ -8,6 +8,7 @@
 ##2. Get the matrix
 ##3. Set the Inverse of the matrix
 ##4. Get the Inverse of the matrix
+
 makeCacheMatrix <- function(x = matrix()) {
 
 	#m is the cached result of solve operation
@@ -40,11 +41,12 @@ makeCacheMatrix <- function(x = matrix()) {
 ##cacheSolve find the inverse of special matrix created by makeCacheMatrix
 ##If the inverse is already calculated, it gives the precalculated inverse.
 ##Else, it computes the inverse and stores it in special matrix.
+
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
 	m <- x$getinv()
 
-	#It founds hte precomputed inverse
+	#It founds the precomputed inverse
         if(!is.null(m)) {
                 message("getting cached matrix inverse")
                 return(m)
@@ -61,4 +63,4 @@ cacheSolve <- function(x, ...) {
 ### c<-rbind(c(1,-1),c(-1,1))
 ### y<-makeCacheMatrix(c)
 ### cacheSolve(y)
-### Next time, it will give the matrix inverse from cache.
+### On the next call to cacheSolve(y), it will give the matrix inverse from cache.

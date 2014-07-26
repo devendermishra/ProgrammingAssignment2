@@ -38,3 +38,9 @@ cacheSolve <- function(x, ...) {
         x$setinv(m)
         m
 }
+
+###Example: How to test or use?
+### c<-rbind(c(1,-1),c(-1,1))
+### y<-makeCacheMatrix(c)
+### cacheSolve(y)
+### Next time, it will give the matrix inverse from cache.

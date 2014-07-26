@@ -10,14 +10,28 @@
 ##4. Get the Inverse of the matrix
 makeCacheMatrix <- function(x = matrix()) {
 
+	#m is the cached result of solve operation
 	m <- NULL
-        set <- function(y) {
+	
+	#set and get the matrix respectively
+	#matrix
+
+	set <- function(y) {
                 x <<- y
                 m <<- NULL
         }
+	
         get <- function() x
-        setinv <- function(solve) m <<- solve
+
+	#setinv and getinv are to set/get the inverse of the matrix
+	# or any other result which caller wants to store respectively	
+
+	#Assign the calculated solution
+        setinv <- function(solution) m <<- solution
+	#Return the calculated solution
         getinv <- function() m
+
+
         list(set = set, get = get,
              setinv = setinv,
              getinv = getinv)
@@ -29,10 +43,14 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
 	m <- x$getinv()
+
+	#It founds hte precomputed inverse
         if(!is.null(m)) {
                 message("getting cached matrix inverse")
                 return(m)
         }
+
+	#Else, compute the inverse
         data <- x$get()
         m <- solve(data, ...)
         x$setinv(m)
